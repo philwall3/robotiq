@@ -8,7 +8,7 @@ The `launch` and `robot` shows a quick example out-of-the box for visualization 
 
 The relevant folder is `model` that contains firstly all geometries and parameters used for robotic applications and simulation. 
 
-This is the visual geometry (the 85mm model)
+This is the visual geometry of the 85mm model       
 ![85mm](media/visual.png)
 
 For a model to be instantiated, there are two __mandatory__ parameters `parent` and `name`, and three __optional__ parameters that are the `origin`, `precise_collision` and the `adaptive_transmission`.
