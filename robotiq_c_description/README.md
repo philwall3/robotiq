@@ -4,14 +4,14 @@ This package contents the urdf model macros of the 85mm and 140mm stroke models 
 
 ## Content
 
-The `launch` and `robot` shows a quick example out-of-the box for visualization that you can invoke directly with `roslaunch robotiq_c_description display.launch`.
+The [`launch`](launch) and [`robot`](robot) shows a quick example out-of-the box for visualization that you can invoke directly with `roslaunch robotiq_c_description display.launch`.
 
-The relevant folder is `model` that contains firstly all geometries and parameters used for robotic applications and simulation. 
+The relevant folder is [`model`](model) that contains all geometries and parameters used for robotic applications and simulation. 
 
 This is the visual geometry of the 85mm model       
 ![85mm](media/visual.png)
 
-For a model to be instantiated, there are two __mandatory__ parameters `parent` and `name`, and three __optional__ parameters that are the `origin`, `precise_collision` and the `adaptive_transmission`.
+For a model to be instantiated, there are two __mandatory__ parameters `parent` and `name`, and three __optional__ parameters that are the `origin`, `precise_collision` and the `adaptive_transmission` (see for instance [the 85mm model](https://github.com/beta-robots/robotiq/blob/new_2_finger_models/robotiq_c_description/model/c85.urdf.xacro#L29)).
 
 - `name` is your model instance (equivalent to `prefix` in ros-industrial), but here it is mandatory to name the device, since it is always related to the hardware interface package. No underscore `_` is needed by the way.
 
