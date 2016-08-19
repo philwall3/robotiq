@@ -3,7 +3,8 @@
 <!-- 
 	Coordinate system convention for grippers:
 	The pin of the gripper is along the y-axis, and z-axis points up. 
-	The resulting x-axis is considered the palm face, so +y is right, and -y is left.
+	The resulting x-axis is considered the palm face, so +y is right, and -y is left for 
+	a right-hand gripper, whatever that means in this gripper.
 
 	Coarse and precise models:
 
@@ -16,7 +17,7 @@
 	and update of real hw, and an implementation of the 5-bar transmission with 
 	spring transmission for grasp simulation.
 
-	For grasp simulation, the file c85.gazebo.xacro sets additional parameters such as
+	For grasp simulation, the file 2f85.gazebo.xacro sets additional parameters such as
 	material properties, and simulation parameters.
 -->
 
@@ -26,11 +27,11 @@
 </xacro:macro -->
 
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-	<xacro:macro name="robotiq_c_85" params="parent name precise_collision:=false adaptive_transmission:=false *origin">
+	<xacro:macro name="robotiq_2f_85" params="parent name precise_collision:=false adaptive_transmission:=false *origin">
 
 		<!-- base -->
 		<joint name="${parent}_${name}_base_joint" type="fixed">
-			<insert_block name="origin"/>
+			<xacro:insert_block name="origin"/>
 			<parent link="${parent}"/>
 			<child link="${name}_base"/>
 		</joint>
@@ -42,7 +43,7 @@
 			</inertial -->
 			<visual>
 				<geometry>
-					<mesh filename="package://robotiq_2f_model/model/meshes/c85/visual/base.dae" scale="0.001 0.001 0.001"/>
+					<mesh filename="package://robotiq_2f_model/model/meshes/2f85/visual/base.dae" scale="0.001 0.001 0.001"/>
 				</geometry>
 			</visual>
 			<xacro:unless value="${precise_collision}">
@@ -62,7 +63,7 @@
 			<xacro:if value="${precise_collision}">
 			<collision>
 				<geometry>
-					<mesh filename="package://robotiq_2f_model/model/meshes/c85/collision/base.stl" scale="0.001 0.001 0.001"/>
+					<mesh filename="package://robotiq_2f_model/model/meshes/2f85/collision/base.stl" scale="0.001 0.001 0.001"/>
 				</geometry>
 			</collision>
 			</xacro:if>
@@ -75,7 +76,7 @@
 			<parent link="${name}_base"/>
 			<child link="${name}_right_driver"/>
 			<axis xyz="1 0 0"/>
-			<limit lower="${0 * 3.141592 / 180}" upper="${41 * 3.141592 / 180}" effort="176" velocity="${110 * 3.141592 / 180}" />
+			<limit lower="${0 * 3.141592 / 180}" upper="${50 * 3.141592 / 180}" effort="60" velocity="${110 * 3.141592 / 180}" />
 		</joint>
 		<link name="${name}_right_driver">
 			<!-- inertial>
@@ -85,7 +86,7 @@
 			</inertial -->
 			<visual>
 				<geometry>
-					<mesh filename="package://robotiq_2f_model/model/meshes/c85/visual/driver.dae" scale="0.001 0.001 0.001"/>
+					<mesh filename="package://robotiq_2f_model/model/meshes/2f85/visual/driver.dae" scale="0.001 0.001 0.001"/>
 				</geometry>
 			</visual>
 			<xacro:unless value="${precise_collision}">
@@ -99,7 +100,7 @@
 			<xacro:if value="${precise_collision}">
 			<collision>
 				<geometry>
-					<mesh filename="package://robotiq_2f_model/model/meshes/c85/collision/driver.stl" scale="0.001 0.001 0.001"/>
+					<mesh filename="package://robotiq_2f_model/model/meshes/2f85/collision/driver.stl" scale="0.001 0.001 0.001"/>
 				</geometry>
 			</collision>
 			</xacro:if>
@@ -129,7 +130,7 @@
 			</inertial -->
 			<visual>
 				<geometry>
-					<mesh filename="package://robotiq_2f_model/model/meshes/c85/visual/coupler.dae" scale="0.001 0.001 0.001"/>
+					<mesh filename="package://robotiq_2f_model/model/meshes/2f85/visual/coupler.dae" scale="0.001 0.001 0.001"/>
 				</geometry>
 			</visual>
 			<xacro:unless value="${precise_collision}">
@@ -143,7 +144,7 @@
 			<xacro:if value="${precise_collision}">
 				<collision>
 					<geometry>
-						<mesh filename="package://robotiq_2f_model/model/meshes/c85/collision/coupler.stl" scale="0.001 0.001 0.001"/>
+						<mesh filename="package://robotiq_2f_model/model/meshes/2f85/collision/coupler.stl" scale="0.001 0.001 0.001"/>
 					</geometry>
 				</collision>
 			</xacro:if>
@@ -168,7 +169,7 @@
 			</inertial -->
 			<visual>
 				<geometry>
-					<mesh filename="package://robotiq_2f_model/model/meshes/c85/visual/follower.dae" scale="0.001 0.001 0.001"/>
+					<mesh filename="package://robotiq_2f_model/model/meshes/2f85/visual/follower.dae" scale="0.001 0.001 0.001"/>
 				</geometry>
 			</visual>
 			<xacro:unless value="${precise_collision}">
@@ -182,7 +183,7 @@
 			<xacro:if value="${precise_collision}">
 			<collision>
 				<geometry>
-					<mesh filename="package://robotiq_2f_model/model/meshes/c85/collision/follower.stl" scale="0.001 0.001 0.001"/>
+					<mesh filename="package://robotiq_2f_model/model/meshes/2f85/collision/follower.stl" scale="0.001 0.001 0.001"/>
 				</geometry>
 			</collision>
 			</xacro:if>
@@ -200,7 +201,7 @@
 			</inertial -->
 			<visual>
 				<geometry>
-					<mesh filename="package://robotiq_2f_model/model/meshes/c85/visual/pad.dae" scale="0.001 0.001 0.001"/>
+					<mesh filename="package://robotiq_2f_model/model/meshes/2f85/visual/pad.dae" scale="0.001 0.001 0.001"/>
 				</geometry>
 			</visual>
 			<xacro:unless value="${precise_collision}">
@@ -214,7 +215,7 @@
 			<xacro:if value="${precise_collision}">
 			<collision>
 				<geometry>
-					<mesh filename="package://robotiq_2f_model/model/meshes/c85/collision/pad.stl" scale="0.001 0.001 0.001"/>
+					<mesh filename="package://robotiq_2f_model/model/meshes/2f85/collision/pad.stl" scale="0.001 0.001 0.001"/>
 				</geometry>
 			</collision>
 			</xacro:if>
@@ -239,7 +240,7 @@
 			</inertial -->
 			<visual>
 				<geometry>
-					<mesh filename="package://robotiq_2f_model/model/meshes/c85/visual/spring_link.dae" scale="0.001 0.001 0.001"/>
+					<mesh filename="package://robotiq_2f_model/model/meshes/2f85/visual/spring_link.dae" scale="0.001 0.001 0.001"/>
 				</geometry>
 			</visual>
 			<xacro:unless value="${precise_collision}">
@@ -253,7 +254,7 @@
 			<xacro:if value="${precise_collision}">
 			<collision>
 				<geometry>
-					<mesh filename="package://robotiq_2f_model/model/meshes/c85/collision/spring_link.stl" scale="0.001 0.001 0.001"/>
+					<mesh filename="package://robotiq_2f_model/model/meshes/2f85/collision/spring_link.stl" scale="0.001 0.001 0.001"/>
 				</geometry>
 			</collision>
 			</xacro:if>
@@ -280,7 +281,7 @@
 			</inertial -->
 			<visual>
 				<geometry>
-					<mesh filename="package://robotiq_2f_model/model/meshes/c85/visual/driver.dae" scale="0.001 0.001 0.001"/>
+					<mesh filename="package://robotiq_2f_model/model/meshes/2f85/visual/driver.dae" scale="0.001 0.001 0.001"/>
 				</geometry>
 			</visual>
 			<xacro:unless value="${precise_collision}">
@@ -294,7 +295,7 @@
 			<xacro:if value="${precise_collision}">
 			<collision>
 				<geometry>
-					<mesh filename="package://robotiq_2f_model/model/meshes/c85/collision/driver.stl" scale="0.001 0.001 0.001"/>
+					<mesh filename="package://robotiq_2f_model/model/meshes/2f85/collision/driver.stl" scale="0.001 0.001 0.001"/>
 				</geometry>
 			</collision>
 			</xacro:if>
@@ -324,7 +325,7 @@
 			</inertial -->
 			<visual>
 				<geometry>
-					<mesh filename="package://robotiq_2f_model/model/meshes/c85/visual/coupler.dae" scale="0.001 0.001 0.001"/>
+					<mesh filename="package://robotiq_2f_model/model/meshes/2f85/visual/coupler.dae" scale="0.001 0.001 0.001"/>
 				</geometry>
 			</visual>
 			<xacro:unless value="${precise_collision}">
@@ -338,7 +339,7 @@
 			<xacro:if value="${precise_collision}">
 				<collision>
 					<geometry>
-						<mesh filename="package://robotiq_2f_model/model/meshes/c85/collision/coupler.stl" scale="0.001 0.001 0.001"/>
+						<mesh filename="package://robotiq_2f_model/model/meshes/2f85/collision/coupler.stl" scale="0.001 0.001 0.001"/>
 					</geometry>
 				</collision>
 			</xacro:if>
@@ -363,7 +364,7 @@
 			</inertial -->
 			<visual>
 				<geometry>
-					<mesh filename="package://robotiq_2f_model/model/meshes/c85/visual/follower.dae" scale="0.001 0.001 0.001"/>
+					<mesh filename="package://robotiq_2f_model/model/meshes/2f85/visual/follower.dae" scale="0.001 0.001 0.001"/>
 				</geometry>
 			</visual>
 			<xacro:unless value="${precise_collision}">
@@ -377,7 +378,7 @@
 			<xacro:if value="${precise_collision}">
 			<collision>
 				<geometry>
-					<mesh filename="package://robotiq_2f_model/model/meshes/c85/collision/follower.stl" scale="0.001 0.001 0.001"/>
+					<mesh filename="package://robotiq_2f_model/model/meshes/2f85/collision/follower.stl" scale="0.001 0.001 0.001"/>
 				</geometry>
 			</collision>
 			</xacro:if>
@@ -395,7 +396,7 @@
 			</inertial -->
 			<visual>
 				<geometry>
-					<mesh filename="package://robotiq_2f_model/model/meshes/c85/visual/pad.dae" scale="0.001 0.001 0.001"/>
+					<mesh filename="package://robotiq_2f_model/model/meshes/2f85/visual/pad.dae" scale="0.001 0.001 0.001"/>
 				</geometry>
 			</visual>
 			<xacro:unless value="${precise_collision}">
@@ -409,7 +410,7 @@
 			<xacro:if value="${precise_collision}">
 			<collision>
 				<geometry>
-					<mesh filename="package://robotiq_2f_model/model/meshes/c85/collision/pad.stl" scale="0.001 0.001 0.001"/>
+					<mesh filename="package://robotiq_2f_model/model/meshes/2f85/collision/pad.stl" scale="0.001 0.001 0.001"/>
 				</geometry>
 			</collision>
 			</xacro:if>
@@ -434,7 +435,7 @@
 			</inertial -->
 			<visual>
 				<geometry>
-					<mesh filename="package://robotiq_2f_model/model/meshes/c85/visual/spring_link.dae" scale="0.001 0.001 0.001"/>
+					<mesh filename="package://robotiq_2f_model/model/meshes/2f85/visual/spring_link.dae" scale="0.001 0.001 0.001"/>
 				</geometry>
 			</visual>
 			<xacro:unless value="${precise_collision}">
@@ -448,10 +449,21 @@
 			<xacro:if value="${precise_collision}">
 			<collision>
 				<geometry>
-					<mesh filename="package://robotiq_2f_model/model/meshes/c85/collision/spring_link.stl" scale="0.001 0.001 0.001"/>
+					<mesh filename="package://robotiq_2f_model/model/meshes/2f85/collision/spring_link.stl" scale="0.001 0.001 0.001"/>
 				</geometry>
 			</collision>
 			</xacro:if>
 		</link>
+
+
+		<transmission name="${name}_right_driver_trans">
+			<type>transmission_interface/SimpleTransmission</type>
+			<joint name="${name}_right_driver_joint">
+				<hardwareInterface>PositionJointInterface</hardwareInterface>
+			</joint>
+			<actuator name="${name}_right_driver_motor">
+				<mechanicalReduction>1</mechanicalReduction>
+			</actuator>
+		</transmission>
 	</xacro:macro>
 </robot>
