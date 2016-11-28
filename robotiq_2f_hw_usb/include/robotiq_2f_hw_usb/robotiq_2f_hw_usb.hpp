@@ -82,7 +82,7 @@ public:
 		int rc = modbus_read_registers(ctx_ptr_, MSR_ADDR, 9, rq_msr_.buffer);
 		if(rc < 0)
 		{
-			std::cout << "Couldn't read the last state on the USB device" << std::endl;
+			ROS_WARN("Couldn't read the last state on the USB device");
 			return;
 		}
 
@@ -98,12 +98,12 @@ public:
 	 */
 	void write()
 	{
-		setPositionEffort(joint_position_command_.at(0), joint_effort_command_.at(0), rq_cmd_);
+		setPositionEffort(joint_position_command_.at(0), 10.0, rq_cmd_);
 
 		int rc = modbus_write_registers(ctx_ptr_, CMD_ADDR, 9, rq_cmd_.buffer);
 		if(rc < 0)
 		{
-			std::cout << "Couldn't write the last command on the USB device" << std::endl;
+			ROS_WARN("Couldn't write the last command on the USB device");
 			return;
 		}
 	}
