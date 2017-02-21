@@ -26,7 +26,7 @@
 	<inertia ixx="${mass * (3 * radius * radius + length * length) / 12}" iyy="${mass * radius* radius / 2}" izz="${mass * (3 * radius * radius + length * length) / 12}" ixy="0" iyz="0" ixz="0"/>
 </xacro:macro -->
 
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
 	<xacro:macro name="robotiq_2f_85" params="parent name precise_collision:=false adaptive_transmission:=false *origin">
 
 		<!-- base -->
