@@ -27,7 +27,7 @@
 </xacro:macro -->
 
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-	<xacro:macro name="robotiq_2f_85" params="parent name precise_collision:=false adaptive_transmission:=false *origin">
+	<xacro:macro name="robotiq_2f_85" params="parent name precise_collision:=false adaptive_transmission:=false with_pads=true *origin">
 
 		<!-- base -->
 		<joint name="${parent}_${name}_base_joint" type="fixed">
@@ -162,11 +162,6 @@
 			</xacro:unless>
 		</joint>
 		<link name="${name}_right_follower">
-			<!-- inertial>
-				<mass value="0.1"/>
-				<origin xyz="0 0 0.055"  />
-				<cylinder_inertia radius="0.06" length="0.11" mass="0.1"/>
-			</inertial -->
 			<visual>
 				<geometry>
 					<mesh filename="package://robotiq_2f_model/model/meshes/2f85/visual/follower.dae" scale="0.001 0.001 0.001"/>
@@ -189,37 +184,36 @@
 			</xacro:if>
 		</link>
 
-		<joint name="${name}_right_pad_joint" type="fixed">
-			<parent link="${name}_right_follower"/>
-			<child link="${name}_right_pad"/>
-		</joint>
-		<link name="${name}_right_pad">
-			<!-- inertial>
-				<mass value="0.1"/>
-				<origin xyz="0 0 0.055"  />
-				<cylinder_inertia radius="0.06" length="0.11" mass="0.1"/>
-			</inertial -->
-			<visual>
-				<geometry>
-					<mesh filename="package://robotiq_2f_model/model/meshes/2f85/visual/pad.dae" scale="0.001 0.001 0.001"/>
-				</geometry>
-			</visual>
-			<xacro:unless value="${precise_collision}">
-			<collision>
-				<origin xyz="0 -0.02 0.03" rpy="0 0 0"/>
-				<geometry>
-					<box size="0.04 0.02 0.06"/>
-				</geometry>
-			</collision>
-			</xacro:unless>
-			<xacro:if value="${precise_collision}">
-			<collision>
-				<geometry>
-					<mesh filename="package://robotiq_2f_model/model/meshes/2f85/collision/pad.stl" scale="0.001 0.001 0.001"/>
-				</geometry>
-			</collision>
-			</xacro:if>
-		</link>
+		
+			<joint name="${name}_right_pad_joint" type="fixed">
+				<parent link="${name}_right_follower"/>
+				<child link="${name}_right_pad"/>
+			</joint>
+			<link name="${name}_right_pad">
+				<!-- If no pad, it just leave the visual and the collision empty such that the hw structure remains, e.g. for moveit! -->
+				<xacro:if value="${with_pads}">
+					<visual>
+						<geometry>
+							<mesh filename="package://robotiq_2f_model/model/meshes/2f85/visual/pad.dae" scale="0.001 0.001 0.001"/>
+						</geometry>
+					</visual>
+					<xacro:unless value="${precise_collision}">
+					<collision>
+						<origin xyz="0 -0.02 0.03" rpy="0 0 0"/>
+						<geometry>
+							<box size="0.04 0.02 0.06"/>
+						</geometry>
+					</collision>
+					</xacro:unless>
+					<xacro:if value="${precise_collision}">
+					<collision>
+						<geometry>
+							<mesh filename="package://robotiq_2f_model/model/meshes/2f85/collision/pad.stl" scale="0.001 0.001 0.001"/>
+						</geometry>
+					</collision>
+					</xacro:if>
+				</xacro:if>
+			</link>
 
 		<joint name="${name}_right_spring_link_joint" type="revolute">
 			<origin xyz="0 0.012 0.0614" rpy="0 0 0"/>
@@ -357,11 +351,6 @@
 			</xacro:unless>
 		</joint>
 		<link name="${name}_left_follower">
-			<!-- inertial>
-				<mass value="0.1"/>
-				<origin xyz="0 0 0.055"  />
-				<cylinder_inertia radius="0.06" length="0.11" mass="0.1"/>
-			</inertial -->
 			<visual>
 				<geometry>
 					<mesh filename="package://robotiq_2f_model/model/meshes/2f85/visual/follower.dae" scale="0.001 0.001 0.001"/>
@@ -389,30 +378,28 @@
 			<child link="${name}_left_pad"/>
 		</joint>
 		<link name="${name}_left_pad">
-			<!-- inertial>
-				<mass value="0.1"/>
-				<origin xyz="0 0 0.055"  />
-				<cylinder_inertia radius="0.06" length="0.11" mass="0.1"/>
-			</inertial -->
-			<visual>
-				<geometry>
-					<mesh filename="package://robotiq_2f_model/model/meshes/2f85/visual/pad.dae" scale="0.001 0.001 0.001"/>
-				</geometry>
-			</visual>
-			<xacro:unless value="${precise_collision}">
-			<collision>
-				<origin xyz="0 -0.02 0.03" rpy="0 0 0"/>
-				<geometry>
-					<box size="0.04 0.02 0.06"/>
-				</geometry>
-			</collision>
-			</xacro:unless>
-			<xacro:if value="${precise_collision}">
-			<collision>
-				<geometry>
-					<mesh filename="package://robotiq_2f_model/model/meshes/2f85/collision/pad.stl" scale="0.001 0.001 0.001"/>
-				</geometry>
-			</collision>
+			<!-- If no pad, it just leave the visual and the collision empty such that the hw structure remains, e.g. for moveit! -->
+			<xacro:if value="${with_pads}">
+				<visual>
+					<geometry>
+						<mesh filename="package://robotiq_2f_model/model/meshes/2f85/visual/pad.dae" scale="0.001 0.001 0.001"/>
+					</geometry>
+				</visual>
+				<xacro:unless value="${precise_collision}">
+				<collision>
+					<origin xyz="0 -0.02 0.03" rpy="0 0 0"/>
+					<geometry>
+						<box size="0.04 0.02 0.06"/>
+					</geometry>
+				</collision>
+				</xacro:unless>
+				<xacro:if value="${precise_collision}">
+				<collision>
+					<geometry>
+						<mesh filename="package://robotiq_2f_model/model/meshes/2f85/collision/pad.stl" scale="0.001 0.001 0.001"/>
+					</geometry>
+				</collision>
+				</xacro:if>
 			</xacro:if>
 		</link>
 
