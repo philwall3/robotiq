@@ -128,7 +128,7 @@ int main( int argc, char** argv )
 			wasStopHandled = true;
 		}
 
-		manager.update(now, period, resetControllers);
+		manager.update(ros::Time::now(), period, resetControllers);
 
 		rq2f_hw.write();
 	}
