@@ -82,7 +82,8 @@ public:
 		int rc = modbus_read_registers(ctx_ptr_, MSR_ADDR, 9, rq_msr_.buffer);
 		if(rc < 0)
 		{
-			ROS_WARN("Couldn't read the last state on the USB device");
+			ROS_FATAL("Couldn't read the last state on the USB device");
+			exit(-1);
 			return;
 		}
 
@@ -103,8 +104,8 @@ public:
 		int rc = modbus_write_registers(ctx_ptr_, CMD_ADDR, 9, rq_cmd_.buffer);
 		if(rc < 0)
 		{
-			ROS_WARN("Couldn't write the last command on the USB device");
-			return;
+			ROS_FATAL("Couldn't write the last command on the USB device");
+			exit(-1);
 		}
 	}
 
