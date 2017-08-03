@@ -2,6 +2,10 @@
 
 This packages addresses the hardware abstraction as well as interfaces to real and simulated robotiq gripper of the 2-finger models.
 
+This interfaces requires the modbus library, that you can easilly install by typing:
+
+`sudo apt-get install libmodbus-dev`
+
 ## Using the USB communication interface
 
 This is perhaps the simplest way to connect to the real gripper, since the R485/USB adaptor comes by default because it is required to config the gripper using the User Interface.
