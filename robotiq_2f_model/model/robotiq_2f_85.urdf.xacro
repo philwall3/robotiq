@@ -27,7 +27,7 @@
 </xacro:macro -->
 
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-	<xacro:macro name="robotiq_2f_85" params="parent name precise_collision:=false adaptive_transmission:=false with_pads=true *origin">
+	<xacro:macro name="robotiq_2f_85" params="parent name precise_collision:=false adaptive_transmission:=false with_pads:=true *origin">
 
 		<!-- base -->
 		<joint name="${parent}_${name}_base_joint" type="fixed">
