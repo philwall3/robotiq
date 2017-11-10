@@ -22,11 +22,21 @@
 -->
 
 <!-- length is along the z-axis! -->
-<!-- xacro:macro name="cylinder_inertia" params="radius length mass">
-	<inertia ixx="${mass * (3 * radius * radius + length * length) / 12}" iyy="${mass * radius* radius / 2}" izz="${mass * (3 * radius * radius + length * length) / 12}" ixy="0" iyz="0" ixz="0"/>
-</xacro:macro -->
+
+
+
 
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+	<xacro:macro name="cylinder_inertia" params="radius length mass">
+		<inertia ixx="${mass * (3 * radius * radius + length * length) / 12}" 
+			 iyy="${mass * radius* radius / 2}" 
+			 izz="${mass * (3 * radius * radius + length * length) / 12}" 
+			 ixy="0" 
+			 iyz="0" 
+			 ixz="0"/>
+	</xacro:macro>
+
 	<xacro:macro name="robotiq_2f_85" params="parent name precise_collision:=false adaptive_transmission:=false with_pads:=true *origin">
 
 		<!-- base -->
@@ -41,6 +51,11 @@
 				<origin xyz="0 0 0.055"  />
 				<cylinder_inertia radius="0.06" length="0.11" mass="0.1"/>
 			</inertial -->
+			<inertial>
+				<mass value="0.1"/>
+				<origin xyz="0 0 0.055"/>
+				<cylinder_inertia radius="0.06" length="0.11" mass="0.1"/>
+			</inertial>
 			<visual>
 				<geometry>
 					<mesh filename="package://robotiq_2f_model/model/meshes/2f85/visual/base.dae" scale="0.001 0.001 0.001"/>
@@ -84,6 +99,11 @@
 				<origin xyz="0 0 0.055"  />
 				<cylinder_inertia radius="0.06" length="0.11" mass="0.1"/>
 			</inertial -->
+			<inertial>
+				<mass value="0.1"/>
+				<origin xyz="0 0 0.055"  />
+				<cylinder_inertia radius="0.06" length="0.11" mass="0.1"/>
+			</inertial>
 			<visual>
 				<geometry>
 					<mesh filename="package://robotiq_2f_model/model/meshes/2f85/visual/driver.dae" scale="0.001 0.001 0.001"/>
@@ -128,6 +148,11 @@
 				<origin xyz="0 0 0.055"  />
 				<cylinder_inertia radius="0.06" length="0.11" mass="0.1"/>
 			</inertial -->
+			<inertial>
+				<mass value="0.1"/>
+				<origin xyz="0 0 0.055"  />
+				<cylinder_inertia radius="0.06" length="0.11" mass="0.1"/>
+			</inertial>
 			<visual>
 				<geometry>
 					<mesh filename="package://robotiq_2f_model/model/meshes/2f85/visual/coupler.dae" scale="0.001 0.001 0.001"/>
@@ -194,6 +219,11 @@
 				<origin xyz="0 0 0.055"  />
 				<cylinder_inertia radius="0.06" length="0.11" mass="0.1"/>
 			</inertial -->
+			<inertial>
+				<mass value="0.1"/>
+				<origin xyz="0 0 0.055"  />
+				<cylinder_inertia radius="0.06" length="0.11" mass="0.1"/>
+			</inertial>
 			<visual>
 				<geometry>
 					<mesh filename="package://robotiq_2f_model/model/meshes/2f85/visual/pad.dae" scale="0.001 0.001 0.001"/>
@@ -233,6 +263,11 @@
 				<origin xyz="0 0 0.055"  />
 				<cylinder_inertia radius="0.06" length="0.11" mass="0.1"/>
 			</inertial -->
+			<inertial>
+				<mass value="0.1"/>
+				<origin xyz="0 0 0.055"  />
+				<cylinder_inertia radius="0.06" length="0.11" mass="0.1"/>
+			</inertial>
 			<visual>
 				<geometry>
 					<mesh filename="package://robotiq_2f_model/model/meshes/2f85/visual/spring_link.dae" scale="0.001 0.001 0.001"/>
@@ -274,6 +309,11 @@
 				<origin xyz="0 0 0.055"  />
 				<cylinder_inertia radius="0.06" length="0.11" mass="0.1"/>
 			</inertial -->
+			<inertial>
+				<mass value="0.1"/>
+				<origin xyz="0 0 0.055"  />
+				<cylinder_inertia radius="0.06" length="0.11" mass="0.1"/>
+			</inertial>
 			<visual>
 				<geometry>
 					<mesh filename="package://robotiq_2f_model/model/meshes/2f85/visual/driver.dae" scale="0.001 0.001 0.001"/>
@@ -318,6 +358,11 @@
 				<origin xyz="0 0 0.055"  />
 				<cylinder_inertia radius="0.06" length="0.11" mass="0.1"/>
 			</inertial -->
+			<inertial>
+				<mass value="0.1"/>
+				<origin xyz="0 0 0.055"  />
+				<cylinder_inertia radius="0.06" length="0.11" mass="0.1"/>
+			</inertial>
 			<visual>
 				<geometry>
 					<mesh filename="package://robotiq_2f_model/model/meshes/2f85/visual/coupler.dae" scale="0.001 0.001 0.001"/>
@@ -384,6 +429,11 @@
 				<origin xyz="0 0 0.055"  />
 				<cylinder_inertia radius="0.06" length="0.11" mass="0.1"/>
 			</inertial -->
+			<inertial>
+				<mass value="0.1"/>
+				<origin xyz="0 0 0.055"  />
+				<cylinder_inertia radius="0.06" length="0.11" mass="0.1"/>
+			</inertial>
 			<visual>
 				<geometry>
 					<mesh filename="package://robotiq_2f_model/model/meshes/2f85/visual/pad.dae" scale="0.001 0.001 0.001"/>
@@ -423,6 +473,11 @@
 				<origin xyz="0 0 0.055"  />
 				<cylinder_inertia radius="0.06" length="0.11" mass="0.1"/>
 			</inertial -->
+			<inertial>
+				<mass value="0.1"/>
+				<origin xyz="0 0 0.055"  />
+				<cylinder_inertia radius="0.06" length="0.11" mass="0.1"/>
+			</inertial>
 			<visual>
 				<geometry>
 					<mesh filename="package://robotiq_2f_model/model/meshes/2f85/visual/spring_link.dae" scale="0.001 0.001 0.001"/>
@@ -453,7 +508,43 @@
 			</joint>
 			<actuator name="${name}_right_driver_motor">
 				<mechanicalReduction>1</mechanicalReduction>
+				<hardwareInterface>PositionJointInterface</hardwareInterface>
 			</actuator>
 		</transmission>
+
+		<gazebo>
+		        <!-- loading plugin: mimic joints works in gazebo now -->
+		    <plugin filename="libroboticsgroup_gazebo_mimic_joint_plugin.so" name="${name}_mimic_robotiq_85_1">
+		        <joint>${name}_right_driver_joint</joint>
+		        <mimicJoint>${name}_left_driver_joint</mimicJoint>
+		        <!--multiplier>1.0</multiplier>
+		        <offset>0.0</offset-->
+		    </plugin>
+		    <plugin filename="libroboticsgroup_gazebo_mimic_joint_plugin.so" name="${name}_mimic_robotiq_85_2">
+		        <joint>${name}_right_driver_joint</joint>
+		        <mimicJoint>${name}_left_follower_joint</mimicJoint>
+		        <!--multiplier>1.0</multiplier>
+		        <offset>0.0</offset-->
+		    </plugin>
+		    <plugin filename="libroboticsgroup_gazebo_mimic_joint_plugin.so" name="${name}_mimic_robotiq_85_3">
+		        <joint>${name}_right_driver_joint</joint>
+		        <mimicJoint>${name}_left_spring_link_joint</mimicJoint>
+		        <!--multiplier>1.0</multiplier>
+		        <offset>0.0</offset-->
+		    </plugin>
+		    <plugin filename="libroboticsgroup_gazebo_mimic_joint_plugin.so" name="${name}_mimic_robotiq_85_4">
+		        <joint>${name}_right_driver_joint</joint>
+		        <mimicJoint>${name}_right_follower_joint</mimicJoint>
+		        <multiplier>-1.0</multiplier>
+		        <offset>0.0</offset>
+		    </plugin>
+		    <plugin filename="libroboticsgroup_gazebo_mimic_joint_plugin.so" name="${name}_mimic_robotiq_85_5">
+		        <joint>${name}_right_driver_joint</joint>
+		        <mimicJoint>${name}_right_spring_link_joint</mimicJoint>
+		        <multiplier>-1.0</multiplier>
+		        <offset>0.0</offset>
+		    </plugin>
+		</gazebo>
+
 	</xacro:macro>
 </robot>
